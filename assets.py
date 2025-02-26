@@ -7,31 +7,6 @@ def draw_text(text, font, text_col, x, y, window):
     img = font.render(text, True, text_col)
     window.blit(img, (x, y))
 
-# Button class
-class Button():
-    def __init__(self, x, y, image):
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
-        self.clicked = False
-
-    def draw(self, window):
-        action = False
-        pos = pygame.mouse.get_pos()
-        if self.rect.collidepoint(pos):
-            if pygame.mouse.get_pressed()[0] == 1 and not self.clicked:
-                action = True
-                self.clicked = True
-        if pygame.mouse.get_pressed()[0] == 0:
-            self.clicked = False
-        window.blit(self.image, self.rect)
-        return action
-    def is_clicked(self, pos):
-        if self.rect.collidepoint(pos):
-            return True
-        return False
-
 # Player, World, Enemy, Platform, Lava, Coin, and Exit classes
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, world):

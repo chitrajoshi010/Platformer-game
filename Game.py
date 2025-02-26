@@ -4,7 +4,7 @@ import pickle
 from os import path
 import definitions as defs
 from definitions import GameState
-from assets import Player, World, Platform, Coin, Lava, Exit, Button, draw_text
+from assets import Player, World, Platform, Coin, Lava, Exit, draw_text
 
 pygame.init()
 
