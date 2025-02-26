@@ -1,0 +1,1 @@
+back_img = pygame.transform.scale(back_img, (window_width // 2, window_height // 2))
