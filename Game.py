@@ -8,7 +8,7 @@ from assets import Player, World, Platform, Coin, Lava, Exit, draw_text
 
 pygame.init()
 
-class Game(World):
+class Game():
     def __init__(self):
         self.window = pygame.display.set_mode((defs.window_width, defs.window_height))
         pygame.display.set_caption('Platformer')
@@ -17,16 +17,6 @@ class Game(World):
         self.current_state = GameState.MENU
         self.music_on = True  # Add this line to track the music state
 
-        # Define different classes
-        self.blob_group = pygame.sprite.Group()
-        self.platform_group = pygame.sprite.Group()
-        self.lava_group = pygame.sprite.Group()
-        self.coin_group = pygame.sprite.Group()
-        self.exit_group = pygame.sprite.Group()
-
-        # Create dummy coin for showing the defs.score
-        defs.score_coin = Coin(defs.tile_width // 2, defs.tile_height // 2)
-        self.coin_group.add(defs.score_coin)
         # Load in level data and create world
         if path.exists(f'level{defs.file}_data'):
             with open(f'level{defs.file}_data', 'rb') as pickle_in:
@@ -35,6 +25,9 @@ class Game(World):
             world_data = []
         self.world = World(world_data)
         self.player = Player(100, defs.window_height - 130, self.world)
+        # Create dummy coin for showing the defs.score
+        defs.score_coin = Coin(defs.tile_width // 2, defs.tile_height // 2)
+        self.world.coin_group.add(defs.score_coin)
 
     def state_transition(self):
         if self.current_state == GameState.MENU:
@@ -52,20 +45,20 @@ class Game(World):
         elif self.current_state == GameState.GAME:
             self.draw_background(defs.game_play_img, self.window)
             if defs.game_over == 0:
-                self.blob_group.update()
-                self.platform_group.update()
+                self.world.blob_group.update()
+                self.world.platform_group.update()
                 #update defs.score
                 #check if a coin has been collected
-                if pygame.sprite.spritecollide(self.player, self.coin_group, True):
+                if pygame.sprite.spritecollide(self.player, self.world.coin_group, True):
                     defs.score += 1
                     defs.coin_fx.play()
                 draw_text('X ' + str(defs.score), defs.font_score, defs.white, defs.tile_width - 10, defs.tile_height, self.window)
             
-            self.blob_group.draw(self.window)
-            self.platform_group.draw(self.window)
-            self.lava_group.draw(self.window)
-            self.coin_group.draw(self.window)
-            self.exit_group.draw(self.window)
+            self.world.blob_group.draw(self.window)
+            self.world.platform_group.draw(self.window)
+            self.world.lava_group.draw(self.window)
+            self.world.coin_group.draw(self.window)
+            self.world.exit_group.draw(self.window)
 
             defs.game_over = self.player.update(defs.game_over, self.window)
 
@@ -202,11 +195,11 @@ class Game(World):
     # Function to reset a level
     def reset_level(self, lvl):
         self.player.reset(100, defs.window_height - 130)
-        self.blob_group.empty()
-        self.platform_group.empty()
-        self.coin_group.empty()
-        self.lava_group.empty()
-        self.exit_group.empty()
+        self.world.blob_group.empty()
+        self.world.platform_group.empty()
+        self.world.coin_group.empty()
+        self.world.lava_group.empty()
+        self.world.exit_group.empty()
 
         # Load in level data and create world
         if path.exists(f'level{lvl}_data'):
