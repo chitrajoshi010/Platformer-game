@@ -8,6 +8,9 @@ pygame.init()
 clock = pygame.time.Clock()
 fps = 60
 
+#define game variables
+clicked = False
+level = 4
 #game window
 tile_size = 35
 cols = 20
@@ -69,9 +72,6 @@ samman_img = pygame.image.load('img/samman_text.png')
 members_img = pygame.image.load('img/members_text.png')
 
 
-#define game variables
-clicked = False
-level = 1
 
 #define colours
 white = (255, 255, 255)
