@@ -104,7 +104,9 @@ class Game():
                 return lambda: self.setState(GameState.SETTING, 2)
         elif self.current_state == GameState.SETTING:
             if tile_id == 11:  # Music On button
-                return self.toggle_music
+                return self.toggle_music(16)
+            elif tile_id == 12:  # Music Off button
+                return self.toggle_music(2)
             elif tile_id == 13:  # Back button
                 return lambda: self.setState(GameState.MENU, 1)
             elif tile_id == 14:  # About Us button
@@ -153,12 +155,14 @@ class Game():
                 return lambda: self.setState(GameState.MENU, 1)
         return None
 
-    def toggle_music(self):
+    def toggle_music(self, file_level):
         self.music_on = not self.music_on
         if self.music_on:
             pygame.mixer.music.play(-1)
         else:
             pygame.mixer.music.stop()
+        defs.file = file_level
+        self.reset_level(defs.file)
 
     def setState(self, state, file_level, actual_level = 1):
         defs.level = actual_level
