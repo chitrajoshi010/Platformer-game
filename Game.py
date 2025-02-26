@@ -97,6 +97,7 @@ class Game():
                         action = self.getActionForTile(tile_id)
                         if action:
                             action()
+                            defs.button_click_fx.play()
                         break
 
     def getActionForTile(self, tile_id):
