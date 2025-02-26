@@ -22,21 +22,27 @@ class Player(pygame.sprite.Sprite):
 
         if game_over == 0:
             key = pygame.key.get_pressed()
-            if key[pygame.K_SPACE] and not self.jumped and not self.in_air:
+            # Jump using space, up arrow, or "w"
+            if (key[pygame.K_SPACE] or key[pygame.K_UP] or key[pygame.K_w]) and not self.jumped and not self.in_air:
                 jump_fx.play()
                 self.vel_y = -15
                 self.jumped = True
-            if not key[pygame.K_SPACE]:
+            # Reset jump state when none of the jump keys are pressed
+            if not (key[pygame.K_SPACE] or key[pygame.K_UP] or key[pygame.K_w]):
                 self.jumped = False
-            if key[pygame.K_LEFT]:
+
+            # Move left using left arrow or "a"
+            if key[pygame.K_LEFT] or key[pygame.K_a]:
                 dx -= 5
                 self.counter += 1
                 self.direction = -1
-            if key[pygame.K_RIGHT]:
+            # Move right using right arrow or "d"
+            if key[pygame.K_RIGHT] or key[pygame.K_d]:
                 dx += 5
                 self.counter += 1
                 self.direction = 1
-            if not key[pygame.K_LEFT] and not key[pygame.K_RIGHT]:
+            # Reset animation if no horizontal movement keys are pressed
+            if not (key[pygame.K_LEFT] or key[pygame.K_a]) and not (key[pygame.K_RIGHT] or key[pygame.K_d]):
                 self.counter = 0
                 self.index = 0
                 if self.direction == 1:
