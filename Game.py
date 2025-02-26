@@ -25,13 +25,11 @@ class Game():
             world_data = []
         self.world = World(world_data)
         self.player = Player(100, defs.window_height - 130, self.world)
-        # Create dummy coin for showing the defs.score
-        defs.score_coin = Coin(defs.tile_width // 2, defs.tile_height // 2)
-        self.world.coin_group.add(defs.score_coin)
 
     def state_transition(self):
         if self.current_state == GameState.MENU:
             self.draw_background(defs.main_menu_img, self.window)
+            self.Score()
             defs.game_over = 0
         elif self.current_state == GameState.SETTING:
             self.draw_background(defs.main_menu_img, self.window)
@@ -52,8 +50,7 @@ class Game():
                 if pygame.sprite.spritecollide(self.player, self.world.coin_group, True):
                     defs.score += 1
                     defs.coin_fx.play()
-                draw_text('X ' + str(defs.score), defs.font_score, defs.white, defs.tile_width - 10, defs.tile_height, self.window)
-            
+                self.Score()            
             self.world.blob_group.draw(self.window)
             self.world.platform_group.draw(self.window)
             self.world.lava_group.draw(self.window)
@@ -64,7 +61,6 @@ class Game():
 
             #if player has died
             if defs.game_over == -1:
-                defs.score = 0
                 self.current_state = GameState.YOU_FAIL
 
             #if player has completed the level
@@ -72,7 +68,6 @@ class Game():
                 #reset game and go to next level
                 self.current_state = GameState.GAME_OVER
                 defs.file += 1
-                defs.score = 0
 
         elif self.current_state == GameState.YOU_FAIL:
             self.reset_level(13)
@@ -170,6 +165,12 @@ class Game():
         self.current_state = state
         defs.file = file_level
         self.reset_level(defs.file)
+
+    def Score(self):
+        # Create dummy coin for showing the defs.score
+        draw_text(str(defs.score), defs.font_score, defs.white, defs.tile_width, defs.tile_height // 8, self.window)
+        defs.score_coin = Coin(defs.tile_width // 2, defs.tile_height // 2)
+        self.world.coin_group.add(defs.score_coin)
 
     def draw_background(self, img, window):
         self.window.blit(img, (0,0))

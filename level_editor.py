@@ -44,7 +44,7 @@ home_btn_img = pygame.image.load('img/home.png')
 #load images
 sun_img = pygame.image.load('img/sun.png')
 sun_img = pygame.transform.scale(sun_img, (tile_size, tile_size))
-game_play_img = pygame.image.load('img/sky.png')
+game_play_img = pygame.image.load('img/sky.jpg')
 game_play_img = pygame.transform.scale(game_play_img, (window_width, window_height - margin))
 dirt_img = pygame.image.load('img/dirt.png')
 grass_img = pygame.image.load('img/grass.png')

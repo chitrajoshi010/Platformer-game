@@ -29,7 +29,6 @@ file = 1
 level = 1
 total_levels = 9
 score = 0
-unlocked_levels = 1
 
 # Define fonts
 font = pygame.font.SysFont('Bauhaus 93', 70)
@@ -68,7 +67,7 @@ main_menu_img = pygame.image.load('img/main_menu.jpg')
 main_menu_img = pygame.transform.scale(main_menu_img, (window_width, window_height))
 level_select_bk_img = pygame.image.load('img/select_level.jpg')
 level_select_bk_img = pygame.transform.scale(level_select_bk_img, (window_width, window_height))
-game_play_img = pygame.image.load('img/sky.png')
+game_play_img = pygame.image.load('img/sky.jpg')
 game_play_img = pygame.transform.scale(game_play_img, (window_width, window_height))
 dirt_img = pygame.image.load('img/dirt.png')
 grass_img = pygame.image.load('img/grass.png')
