@@ -20,11 +20,11 @@ This project is a collection of practice exercises and mini-games developed usin
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/pygame-practice.git
+    git clone https://github.com/chitrajoshi010/Platformer-game.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd pygame-practice
+    cd PYGAME GAME
     ```
 3. Install the required dependencies:
     ```bash
