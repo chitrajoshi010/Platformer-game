@@ -37,6 +37,10 @@ To run a game, execute the `main.py` script:
 ```bash
 python main.py
 ```
+## How to play?
+1️⃣ Use arrow keys or WAD to move and jump
+2️⃣ Additionally, space bar to jump
+3️⃣ Reach the goal while avoiding obstacles and collecting items
 
 ## Contributing
 
