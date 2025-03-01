@@ -65,13 +65,8 @@ select_level_img = pygame.image.load('img/select_level_text.png')
 you_fail_img = pygame.image.load('img/you_fail_text.png')
 you_won_img = pygame.image.load('img/you_won_text.png')
 # names 
-chitra_img = pygame.image.load('img/chitra_text.png')
-diksha_img = pygame.image.load('img/diksha_text.png')
-garima_img = pygame.image.load('img/garima_text.png')
-samman_img = pygame.image.load('img/samman_text.png')
-members_img = pygame.image.load('img/members_text.png')
-
-
+chitra_img = pygame.image.load('img/chitra_text_img.png')
+prepared_by_img = pygame.image.load('img/prepared_text_img.png')
 
 #define colours
 white = (255, 255, 255)
@@ -242,20 +237,8 @@ def draw_world():
 					img = pygame.transform.scale(chitra_img, (6*tile_size, tile_size))
 					window.blit(img, (col * tile_size, row * tile_size))
 				if world_data[row][col] == 34:
-					# diksha text
-					img = pygame.transform.scale(diksha_img, (6*tile_size, tile_size))
-					window.blit(img, (col * tile_size, row * tile_size))
-				if world_data[row][col] == 35:
-					# garima text
-					img = pygame.transform.scale(garima_img, (6*tile_size, tile_size))
-					window.blit(img, (col * tile_size, row * tile_size))
-				if world_data[row][col] == 36:
-					# samman text
-					img = pygame.transform.scale(samman_img, (6*tile_size, tile_size))
-					window.blit(img, (col * tile_size, row * tile_size))
-				if world_data[row][col] == 37:
-					# members
-					img = pygame.transform.scale(members_img, (8*tile_size, 2*tile_size))
+					# prepared by
+					img = pygame.transform.scale(prepared_by_img, (8*tile_size, 2*tile_size))
 					window.blit(img, (col * tile_size, row * tile_size))
 
 class Button():
@@ -338,12 +321,12 @@ while run:
 				#update tile value
 				if pygame.mouse.get_pressed()[0]:
 					world_data[y][x] += 1
-					if world_data[y][x] > 37:
+					if world_data[y][x] > 34:
 						world_data[y][x] = 0
 				elif pygame.mouse.get_pressed()[2]:
 					world_data[y][x] -= 1
 					if world_data[y][x] < 0:
-						world_data[y][x] = 37
+						world_data[y][x] = 34
 		if event.type == pygame.MOUSEBUTTONUP:
 			clicked = False
 		#up and down key presses to change level number

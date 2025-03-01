@@ -335,25 +335,7 @@ class World():
                     img_rect.y = row_count * tile_height
                     self.tile_list.append((tile, img, img_rect))
                 elif tile == 34:
-                    img = pygame.transform.scale(diksha_img, (6 * tile_width, tile_height))
-                    img_rect = img.get_rect()
-                    img_rect.x = col_count * tile_width
-                    img_rect.y = row_count * tile_height
-                    self.tile_list.append((tile, img, img_rect))
-                elif tile == 35:
-                    img = pygame.transform.scale(garima_img, (6 * tile_width, tile_height))
-                    img_rect = img.get_rect()
-                    img_rect.x = col_count * tile_width
-                    img_rect.y = row_count * tile_height
-                    self.tile_list.append((tile, img, img_rect))
-                elif tile == 36:
-                    img = pygame.transform.scale(samman_img, (6 * tile_width, tile_height))
-                    img_rect = img.get_rect()
-                    img_rect.x = col_count * tile_width
-                    img_rect.y = row_count * tile_height
-                    self.tile_list.append((tile, img, img_rect))
-                elif tile == 37:
-                    img = pygame.transform.scale(members_img, (8 * tile_width, 2 * tile_height))
+                    img = pygame.transform.scale(prepared_by_img, (8 * tile_width, 2*tile_height))
                     img_rect = img.get_rect()
                     img_rect.x = col_count * tile_width
                     img_rect.y = row_count * tile_height

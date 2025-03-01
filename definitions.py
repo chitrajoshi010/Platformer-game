@@ -85,11 +85,8 @@ select_level_img = pygame.image.load('img/select_level_text.png')
 you_fail_img = pygame.image.load('img/you_fail_text.png')
 you_won_img = pygame.image.load('img/you_won_text.png')
 # names 
-chitra_img = pygame.image.load('img/chitra_text.png')
-diksha_img = pygame.image.load('img/diksha_text.png')
-garima_img = pygame.image.load('img/garima_text.png')
-samman_img = pygame.image.load('img/samman_text.png')
-members_img = pygame.image.load('img/members_text.png')
+chitra_img = pygame.image.load('img/chitra_text_img.png')
+prepared_by_img = pygame.image.load('img/prepared_text_img.png')
 
 # Load sounds
 pygame.mixer.music.load('img/music.wav')
